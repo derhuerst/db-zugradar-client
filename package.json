@@ -14,6 +14,7 @@
 	"dependencies": {
 		"content-type": "^1.0.2",
 		"fetch-ponyfill": "^4.0.0",
+		"iconv-lite": "^0.4.16",
 		"moment-timezone": "^0.5.13"
 	},
 	"devDependencies": {

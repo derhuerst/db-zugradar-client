@@ -4,8 +4,7 @@ const moment = require('moment-timezone')
 const qs = require('querystring')
 const {fetch} = require('fetch-ponyfill')()
 const {parse} = require('content-type')
-
-'/bin/livemap/query-livemap.exe/dny?L=vs_livefahrplan&performLocating=1&performFixedLocating=1&look_requesttime=15:15:00&livemapRequest=yes&ts=20170428'
+const {decode} = require('iconv-lite')
 
 const positions = (when = Date.now()) => {
 	const date = moment(when).tz('Europe/Berlin').format('YYYYMMDD')
@@ -37,8 +36,9 @@ const positions = (when = Date.now()) => {
 			throw new Error('invalid response type: ' + type)
 		}
 
-		return res.json()
+		return res.buffer()
 	})
+	.then((raw) => JSON.parse(decode(raw, 'ISO-8859-1')))
 }
 
 module.exports = positions
