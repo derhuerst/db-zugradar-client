@@ -16,9 +16,10 @@ const parseTime = (time) => {
 const parse = ([coords]) => {
 	const trains = []
 	for (let c of coords) {
+		if (!c[10] || !c[12]) continue
 		trains.push({
 			name: c[0],
-			id: c[3],
+			id: c[3] + '',
 			previousStation: {
 				type: 'station',
 				id: c[10],

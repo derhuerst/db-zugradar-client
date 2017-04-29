@@ -13,7 +13,7 @@ const minute = 60 * 1000
 const hour = 60 * minute
 const when = new Date(+floor(new Date(), 'day') + 10 * hour)
 
-const isValidWhen = (_when) => isRoughlyEqual(10 * hour, +when, _when * 1000)
+const isValidWhen = (_when) => isRoughlyEqual(14 * hour, +when, _when * 1000)
 
 
 
