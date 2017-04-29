@@ -18,7 +18,43 @@ npm install db-zugradar-client
 ## Usage
 
 ```js
-todo
+const {positions, route} = require('db-zugradar-client')
+```
+
+`positions([when])` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an array of trains, each looking like this:
+
+```js
+{
+	name: 'IC   842',
+	id: '84/260080/18/19/80',
+	previousStation: {
+		type: 'station',
+		id: '8503000',
+		name: 'Zürich HB',
+		departure: 1493416947
+	},
+	nextStation: {
+		type: 'station',
+		id: '8500218',
+		name: 'Olten',
+		arrival: 1493416947,
+		delay: 0
+	},
+	delay: 360,
+	direction: {
+		type: 'station',
+		name: 'Bern'
+	}
+}
+```
+
+`previousStation` and `nextStation` are [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects.
+
+Given an `id` of a single train, `route` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with a [GeoJSON `GeometryCollection`](https://tools.ietf.org/html/rfc7946#section-3.1.8), containing [`Point`s](https://tools.ietf.org/html/rfc7946#section-3.1.2) and [`LineString`s](https://tools.ietf.org/html/rfc7946#section-3.1.4).
+
+```js
+route('84/260080/18/19/80') // id property from above
+.then(console.log, console.error)
 ```
 
 
