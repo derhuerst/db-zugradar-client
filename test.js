@@ -5,6 +5,7 @@ const floor = require('floordate')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const positions = require('./positions')
+const route = require('./route')
 
 
 
@@ -69,6 +70,25 @@ test('positions', (t) => {
 			t.equal(typeof train.direction.name, 'string')
 			t.ok(train.direction.name)
 		}
+		t.end()
+	})
+	.catch(t.ifError)
+})
+
+
+
+test('route', (t) => {
+	positions(when)
+	.then((trains) => route(trains[0].id))
+	.then((route) => {
+		// todo: properly lint the GeoJSON
+
+		t.equal(route.type, 'GeometryCollection')
+
+		for (let g of route.geometries) {
+			t.ok(g.type === 'Point' || g.type === 'LineString')
+		}
+
 		t.end()
 	})
 	.catch(t.ifError)
