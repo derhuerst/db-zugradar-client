@@ -3,7 +3,7 @@
 	"description":  "Get live departures of DB trains.",
 	"version":      "0.1.0",
 	"main":         "index.js",
-	"files":        ["index.js", "train-positions.js", "train-route.js"],
+	"files":        ["index.js", "positions.js", "route.js"],
 	"keywords":     ["todo"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/db-zugradar-client",
