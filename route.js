@@ -46,7 +46,9 @@ const route = (id, when = Date.now()) => {
 			look_trainid: id,
 			tpl: 'chain2json3',
 			performLocating: '16', // todo
-			format_xy_n: '' // todo
+			format_xy_n: '', // todo
+			look_requesttime: time,
+			ts: date
 		})
 
 	return fetch(target, {
@@ -67,8 +69,11 @@ const route = (id, when = Date.now()) => {
 
 		return res.buffer()
 	})
-	.then((raw) => JSON.parse(decode(raw, 'ISO-8859-1')))
-	.then(parse)
+	.then((raw) => {
+		const data = JSON.parse(decode(raw, 'ISO-8859-1'))
+		if (data.error) throw new Error(`error ${data.error}`)
+		return parse(data)
+	})
 }
 
 module.exports = route

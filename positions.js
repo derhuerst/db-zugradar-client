@@ -78,8 +78,11 @@ const positions = (when = Date.now()) => {
 
 		return res.buffer()
 	})
-	.then((raw) => JSON.parse(decode(raw, 'ISO-8859-1')))
-	.then(parse)
+	.then((raw) => {
+		const data = JSON.parse(decode(raw, 'ISO-8859-1'))
+		if (data.error) throw new Error(`error ${data.error}`)
+		return parse(data)
+	})
 }
 
 module.exports = positions

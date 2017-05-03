@@ -79,7 +79,7 @@ test('positions', (t) => {
 
 test('route', (t) => {
 	positions(when)
-	.then((trains) => route(trains[0].id))
+	.then((trains) => route(trains[0].id, when))
 	.then((route) => {
 		// todo: properly lint the GeoJSON
 
