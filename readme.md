@@ -50,7 +50,7 @@ const {positions, route} = require('db-zugradar-client')
 
 `previousStation` and `nextStation` are [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects.
 
-Given an `id` of a single train, `route` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with a [GeoJSON `GeometryCollection`](https://tools.ietf.org/html/rfc7946#section-3.1.8), containing [`Point`s](https://tools.ietf.org/html/rfc7946#section-3.1.2) and [`LineString`s](https://tools.ietf.org/html/rfc7946#section-3.1.4).
+Given an `id` of a single train, `route(id, [when])` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with a [GeoJSON `GeometryCollection`](https://tools.ietf.org/html/rfc7946#section-3.1.8), containing [`Point`s](https://tools.ietf.org/html/rfc7946#section-3.1.2) and [`LineString`s](https://tools.ietf.org/html/rfc7946#section-3.1.4).
 
 ```js
 route('84/260080/18/19/80') // id property from above

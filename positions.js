@@ -33,7 +33,7 @@ const parse = ([coords]) => {
 				arrival: c[16] ? parseTime(c[16]) : null,
 				delay: parseInt(c[18]) * 60 // in seconds
 			},
-			delay: parseInt(6) * 60, // in seconds
+			delay: parseInt(c[6]) * 60, // in seconds
 			direction: {
 				type: 'station',
 				// todo: id
