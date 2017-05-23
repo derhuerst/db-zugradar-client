@@ -1,5 +1,7 @@
 # db-zugradar-client
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/derhuerst/db-zugradar-client.svg)](https://greenkeeper.io/)
+
 **Get live departures of [DB](https://bahn.de/) trains.**
 
 [![npm version](https://img.shields.io/npm/v/db-zugradar-client.svg)](https://www.npmjs.com/package/db-zugradar-client)
