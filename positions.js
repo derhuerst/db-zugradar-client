@@ -31,9 +31,9 @@ const parse = ([coords]) => {
 				id: c[12],
 				name: c[11],
 				arrival: c[16] ? parseTime(c[16]) : null,
-				delay: parseInt(c[18]) * 60 // in seconds
+				delay: c[18] ? parseInt(c[18]) * 60 : null // in seconds
 			},
-			delay: parseInt(c[6]) * 60, // in seconds
+			delay: c[6] ? parseInt(c[6]) * 60 : null, // in seconds
 			direction: {
 				type: 'station',
 				// todo: id
