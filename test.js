@@ -63,7 +63,7 @@ test('positions', (t) => {
 				}
 			}
 
-			t.equal(typeof train.delay, 'number')
+			if (train.delay) t.equal(typeof train.delay, 'number')
 
 			t.equal(train.direction.type, 'station')
 			t.equal(typeof train.direction.name, 'string')
