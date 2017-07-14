@@ -2,7 +2,7 @@
 
 const moment = require('moment-timezone')
 const qs = require('querystring')
-const {fetch} = require('fetch-ponyfill')()
+const {fetch} = require('fetch-ponyfill')({Promise: require('pinkie-promise')})
 const ct = require('content-type')
 const {decode} = require('iconv-lite')
 
