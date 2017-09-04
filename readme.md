@@ -1,6 +1,6 @@
 # db-zugradar-client
 
-**Get live departures of [DB](https://bahn.de/) trains.**
+**Get live departures of [DB](https://bahn.de/) trains.** With help from [*I like trains*](https://media.ccc.de/v/MRMCD15-6986-i_like_trains).
 
 [![npm version](https://img.shields.io/npm/v/db-zugradar-client.svg)](https://www.npmjs.com/package/db-zugradar-client)
 [![build status](https://img.shields.io/travis/derhuerst/db-zugradar-client.svg)](https://travis-ci.org/derhuerst/db-zugradar-client)
@@ -21,7 +21,7 @@ npm install db-zugradar-client
 const {positions, route} = require('db-zugradar-client')
 ```
 
-`positions([when])` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an array of trains, each looking like this:
+`positions([when], [useHTTPS])` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an array of trains, each looking like this:
 
 ```js
 {
@@ -50,7 +50,7 @@ const {positions, route} = require('db-zugradar-client')
 
 `previousStation` and `nextStation` are [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects.
 
-Given an `id` of a single train, `route(id, [when])` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with a [GeoJSON `GeometryCollection`](https://tools.ietf.org/html/rfc7946#section-3.1.8), containing [`Point`s](https://tools.ietf.org/html/rfc7946#section-3.1.2) and [`LineString`s](https://tools.ietf.org/html/rfc7946#section-3.1.4).
+Given an `id` of a single train, `route(id, [when], [useHTTPS])` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with a [GeoJSON `GeometryCollection`](https://tools.ietf.org/html/rfc7946#section-3.1.8), containing [`Point`s](https://tools.ietf.org/html/rfc7946#section-3.1.2) and [`LineString`s](https://tools.ietf.org/html/rfc7946#section-3.1.4).
 
 ```js
 route('84/260080/18/19/80') // id property from above

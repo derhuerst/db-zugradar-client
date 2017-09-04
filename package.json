@@ -3,7 +3,12 @@
 	"description":  "Get live positions of DB trains.",
 	"version":      "0.1.2",
 	"main":         "index.js",
-	"files":        ["index.js", "positions.js", "route.js"],
+	"files":        [
+		"index.js",
+		"positions.js",
+		"route.js",
+		"lib"
+	],
 	"keywords":     ["todo"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/db-zugradar-client",
