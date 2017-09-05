@@ -4,10 +4,21 @@ const moment = require('moment-timezone')
 
 const request = require('./lib/request')
 
-const parseTime = (time) => {
-	const m = moment().tz('Europe/Berlin')
-	m.hour(parseInt(time.slice(0, 2)))
-	m.minute(parseInt(time.slice(3, 5)))
+const parseWhen = (date, time) => {
+	date = date.split('.') // DD.MM.YYYY
+	if (date.length !== 3) throw new Error('invalid date: ' + date)
+
+	date = [
+		('20' + date[2]).slice(-4),
+		date[1],
+		date[0]
+	].join('-')
+	time = [
+		time.slice(0, 2),
+		time.slice(3, 5)
+	].join(':')
+
+	const m = moment(date + 'T' + time).tz('Europe/Berlin')
 	return Math.round(m / 1000)
 }
 
@@ -22,13 +33,13 @@ const parse = ([coords]) => {
 				type: 'station',
 				id: c[10],
 				name: c[9],
-				departure: c[17] ? parseTime(c[17]) : null
+				departure: c[17] ? parseWhen(c[13], c[17]) : null
 			},
 			nextStation: {
 				type: 'station',
 				id: c[12],
 				name: c[11],
-				arrival: c[16] ? parseTime(c[16]) : null,
+				arrival: c[16] ? parseWhen(c[13], c[16]) : null,
 				delay: c[18] ? parseInt(c[18]) * 60 : null // in seconds
 			},
 			delay: c[6] ? parseInt(c[6]) * 60 : null, // in seconds
@@ -45,8 +56,13 @@ const parse = ([coords]) => {
 }
 
 const positions = (when = Date.now(), useHTTPS = true) => {
-	const date = moment(when).tz('Europe/Berlin').format('YYYYMMDD')
-	const time = moment(when).tz('Europe/Berlin').format('HH:mm:ss')
+	const w = moment(when).tz('Europe/Berlin')
+	const date = w.format('YYYYMMDD')
+	const currentDate = moment().tz('Europe/Berlin').format('YYYYMMDD')
+	if (date !== currentDate) {
+		throw new Error('when must be the current day in Berlin timezone')
+	}
+	const time = w.format('HH:mm:ss')
 
 	return request({
 		livemapRequest: 'yes',

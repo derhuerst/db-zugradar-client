@@ -17,6 +17,8 @@ npm install db-zugradar-client
 
 ## Usage
 
+Note that **you can only query for positions during the current day** (in the `Europe/Berlin` timezone).
+
 ```js
 const {positions, route} = require('db-zugradar-client')
 ```

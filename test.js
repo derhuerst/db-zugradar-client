@@ -11,9 +11,23 @@ const route = require('./route')
 
 const minute = 60 * 1000
 const hour = 60 * minute
-const when = new Date(+floor(new Date(), 'day') + 10 * hour)
+const day = 24 * hour
 
-const isValidWhen = (_when) => isRoughlyEqual(14 * hour, +when, _when * 1000)
+const in2H = Date.now() + 2 * hour
+const tomorrow = +floor(new Date(), 'day') + day
+// don't buble up to the next day
+const when = new Date(Math.min(in2H, tomorrow - minute))
+const tomorrow10am = new Date(tomorrow + 10 * hour)
+
+const isValidWhen = (t) => isRoughlyEqual(14 * hour, +when, t * 1000)
+
+
+
+test('positions & routes throw with date other than current', (t) => {
+	t.plan(2)
+	t.throws(() => positions(tomorrow10am))
+	t.throws(() => route('some-id', tomorrow10am))
+})
 
 
 

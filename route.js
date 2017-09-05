@@ -35,8 +35,13 @@ const parse = ([coords, stations]) => {
 }
 
 const route = (id, when = Date.now()) => {
-	const date = moment(when).tz('Europe/Berlin').format('YYYYMMDD')
-	const time = moment(when).tz('Europe/Berlin').format('HH:mm:ss')
+	const w = moment(when).tz('Europe/Berlin')
+	const date = w.format('YYYYMMDD')
+	const currentDate = moment().tz('Europe/Berlin').format('YYYYMMDD')
+	if (date !== currentDate) {
+		throw new Error('when must be the current day in Berlin timezone')
+	}
+	const time = w.format('HH:mm:ss')
 
 	return request({
 		L: 'vs_livefahrplan',
