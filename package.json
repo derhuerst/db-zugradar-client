@@ -17,7 +17,7 @@
 	"license":      "ISC",
 	"engines":      {"node": ">=6"},
 	"dependencies": {
-		"content-type": "^1.0.2",
+		"content-type": "1.0.3",
 		"fetch-ponyfill": "^4.0.0",
 		"floordate": "^3.0.0",
 		"iconv-lite": "^0.4.16",
