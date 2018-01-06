@@ -23,7 +23,7 @@
 		"iconv-lite": "^0.4.16",
 		"is-roughly-equal": "^0.1.0",
 		"moment-timezone": "^0.5.13",
-		"pinkie-promise": "^2.0.1"
+		"pinkie-promise": "^2.0.2"
 	},
 	"devDependencies": {
 		"tape": "^4.6.3",
