@@ -38,10 +38,6 @@ test('positions', (t) => {
 			t.equal(typeof train.name, 'string')
 			t.ok(train.name)
 
-			if (typeof train.id !== 'string') {
-				console.log(train.id)
-				break
-			}
 			t.equal(typeof train.id, 'string')
 			t.ok(train.id)
 

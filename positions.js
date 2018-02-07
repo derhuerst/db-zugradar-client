@@ -27,7 +27,7 @@ const parse = ([coords]) => {
 	for (let c of coords) {
 		if (!c[10] || !c[12]) continue
 		trains.push({
-			name: c[0],
+			name: c[0] && c[0].replace(/\s+/, ' ') || null,
 			id: c[3] + '',
 			previousStation: {
 				type: 'station',
