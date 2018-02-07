@@ -1,7 +1,7 @@
 'use strict'
 
+const {DateTime} = require('luxon')
 const test = require('tape')
-const floor = require('floordate')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const positions = require('./positions')
@@ -11,15 +11,21 @@ const route = require('./route')
 
 const minute = 60 * 1000
 const hour = 60 * minute
-const day = 24 * hour
 
 const in2H = Date.now() + 2 * hour
-const tomorrow = +floor(new Date(), 'day') + day
+const tomorrow = DateTime.fromMillis(Date.now(), {
+	zone: 'Europe/Berlin',
+	locale: 'de-DE'
+})
+.plus({days: 1})
+.startOf('day')
+.valueOf()
+
 // don't buble up to the next day
 const when = new Date(Math.min(in2H, tomorrow - minute))
 const tomorrow10am = new Date(tomorrow + 10 * hour)
 
-const isValidWhen = (t) => isRoughlyEqual(14 * hour, +when, t * 1000)
+const isValidWhen = t => isRoughlyEqual(30 * hour, +when, t * 1000)
 
 
 
