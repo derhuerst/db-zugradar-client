@@ -1,7 +1,8 @@
 'use strict'
 
-const moment = require('moment-timezone')
+const {DateTime} = require('luxon')
 
+const formatDateTime = require('./lib/format-date-time')
 const request = require('./lib/request')
 
 const parseWhen = (date, time) => {
@@ -18,7 +19,7 @@ const parseWhen = (date, time) => {
 		time.slice(3, 5)
 	].join(':')
 
-	const m = moment(date + 'T' + time).tz('Europe/Berlin')
+	const m = DateTime.fromISO(date + 'T' + time, {zone: 'Europe/Berlin'})
 	return Math.round(m / 1000)
 }
 
@@ -51,18 +52,17 @@ const parse = ([coords]) => {
 		})
 	}
 	// const c = coords.find((c) => c[0].indexOf('278') >= 0 && c[0].indexOf('ICE') >= 0)
+	// todo
 
 	return trains
 }
 
 const positions = (when = Date.now(), useHTTPS = true) => {
-	const w = moment(when).tz('Europe/Berlin')
-	const date = w.format('YYYYMMDD')
-	const currentDate = moment().tz('Europe/Berlin').format('YYYYMMDD')
+	const {date, time} = formatDateTime(+when)
+	const currentDate = formatDateTime(Date.now()).date
 	if (date !== currentDate) {
 		throw new Error('when must be the current day in Berlin timezone')
 	}
-	const time = w.format('HH:mm:ss')
 
 	return request({
 		livemapRequest: 'yes',

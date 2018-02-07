@@ -33,13 +33,13 @@ const {positions, route} = require('db-zugradar-client')
 		type: 'station',
 		id: '8503000',
 		name: 'Zürich HB',
-		departure: 1493416947
+		departure: 1493416947 // UNIX timestamp
 	},
 	nextStation: {
 		type: 'station',
 		id: '8500218',
 		name: 'Olten',
-		arrival: 1493416947,
+		arrival: 1493416947, // UNIX timestamp
 		delay: 0
 	},
 	delay: 360,
