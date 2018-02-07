@@ -1,24 +1,28 @@
 {
-	"name":         "db-zugradar-client",
-	"description":  "Get live positions of DB trains.",
-	"version":      "0.2.0",
-	"main":         "index.js",
-	"files":        [
+	"name": "db-zugradar-client",
+	"description": "Get live positions of DB trains.",
+	"version": "0.2.1",
+	"main": "index.js",
+	"files": [
 		"index.js",
 		"positions.js",
 		"route.js",
 		"lib"
 	],
-	"keywords":     ["todo"],
-	"author":       "Jannis R <mail@jannisr.de>",
-	"homepage":     "https://github.com/derhuerst/db-zugradar-client",
-	"repository":   "derhuerst/db-zugradar-client",
-	"bugs":         "https://github.com/derhuerst/db-zugradar-client/issues",
-	"license":      "ISC",
-	"engines":      {"node": ">=6"},
+	"keywords": [
+		"todo"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/db-zugradar-client",
+	"repository": "derhuerst/db-zugradar-client",
+	"bugs": "https://github.com/derhuerst/db-zugradar-client/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
 	"dependencies": {
 		"content-type": "^1.0.2",
-		"fetch-ponyfill": "^4.0.0",
+		"fetch-ponyfill": "^5.0.0",
 		"floordate": "^3.0.0",
 		"iconv-lite": "^0.4.16",
 		"is-roughly-equal": "^0.1.0",
