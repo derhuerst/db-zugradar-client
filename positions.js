@@ -15,8 +15,8 @@ const parseWhen = (date, time) => {
 		date[0]
 	].join('-')
 	time = [
-		time.slice(0, 2),
-		time.slice(3, 5)
+		('0' + time.slice(-5, -3)).slice(-2),
+		time.substr(-2, 2)
 	].join(':')
 
 	const m = DateTime.fromISO(date + 'T' + time, {zone: 'Europe/Berlin'})
