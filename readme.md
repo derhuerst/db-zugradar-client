@@ -1,5 +1,9 @@
 # db-zugradar-client
 
+**Deprecated because the [Zugradar API has been shut off](https://www.webundmobile.de/beyond-dev/business/zugradar-eingestellt-1594134.html).**
+
+---
+
 **Get live departures of [DB](https://bahn.de/) trains.** With help from [*I like trains*](https://media.ccc.de/v/MRMCD15-6986-i_like_trains).
 
 [![npm version](https://img.shields.io/npm/v/db-zugradar-client.svg)](https://www.npmjs.com/package/db-zugradar-client)
@@ -59,6 +63,12 @@ Given an `id` of a single train, `route(id, [when], [useHTTPS])` returns a [Prom
 route('84/260080/18/19/80') // id property from above
 .then(console.log, console.error)
 ```
+
+
+## Related
+
+- [`oebb-zugradar-client`](https://github.com/derhuerst/oebb-zugradar-client) – Get live positions of ÖBB trains.
+- [`oebb-hafas`](https://github.com/juliuste/oebb-hafas) – JavaScript client for the ÖBB HAFAS API.
 
 
 ## Contributing
